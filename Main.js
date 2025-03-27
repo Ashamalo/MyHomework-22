@@ -9,17 +9,16 @@ console.log('#5. JavaScript homework example file')
  * якщо ні - то лічба триває
  */
 
-// const counter = function() {}
 const counter = (function() {
-  let count = 0; // Початкове значення лічильника
+  let count = 0; 
   
   return function(n) {
-    if (n !== undefined) { // Якщо передано аргумент
-      count = n; // Встановлюємо лічильник на це значення
-    } else { // Якщо аргумент не передано
-      count++; // Збільшуємо лічильник на 1
+    if (n !== undefined) { 
+      count = n; 
+    } else { 
+      count++; 
     }
-    return count; // Повертаємо поточне значення
+    return count; 
   };
 })();
 console.log(counter()) // 0
@@ -45,24 +44,23 @@ console.log(counter()) // 1
  * counterFactory.decrement() - зменшує значення лічильника на 1
  */
 
-// const counterFactory = function () {}
 const counterFactory = (function() {
-  let count = 0; // Початкове значення лічильника
+  let count = 0; 
   
   return {
     value: function(n) {
-      if (n !== undefined) { // Якщо передано аргумент
-        count = n; // Встановлюємо нове значення
+      if (n !== undefined) { 
+        count = n; 
       }
-      return count; // Повертаємо поточне значення
+      return count; 
     },
     increment: function() {
-      count++; // Збільшуємо значення на 1
-      return count; // Повертаємо нове значення (не обов'язково, але може бути корисно)
+      count++; 
+      return count; 
     },
     decrement: function() {
-      count--; // Зменшуємо значення на 1
-      return count; // Повертаємо нове значення (не обов'язково, але може бути корисно)
+      count--; 
+      return count; 
     }
   };
 })();
@@ -151,6 +149,10 @@ console.log(myPow(2, -2, myPrint)); // 2^-2=0.25
 const myMul = (a, b) => a * b;
   
 
+console.log(myTriple(3)); // 9 (бо 3 * 3 = 9)
+console.log(myTriple(4)); // 12 (бо 3 * 4 = 12)
+console.log(myTriple(5)); // 15 (бо 3 * 5 = 15)
+
 /*
  * Створіть функції myDouble(n), яка приймає один параметр і подвоює його.
  * Використовувати множення або інші математичні операції всередині функції - заборонено, тільки bind() і myMul().
@@ -166,8 +168,8 @@ console.log(myDouble(5)); // 10 (бо 2 * 5 = 10)
 // Аналогічним чином створюємо функцію myTriple(n), яка потроює параметр, що приймає, повертаючи результат.
 const myTriple = myMul.bind(null, 3);
 
-console.log(myTriple(3)); // 9 (бо 3 * 3 = 9)
-console.log(myTriple(4)); // 12 (бо 3 * 4 = 12)
-console.log(myTriple(5)); // 15 (бо 3 * 5 = 15)
+// console.log(myTriple(3)) // = myMul(3, 3) = 9
+// console.log(myTriple(4)) // = myMul(3, 4) = 12
+// console.log(myTriple(5)) // = myMul(3, 5) = 15
 
 export { counter, counterFactory, myPow, myMax, myMul, myDouble, myTriple }
