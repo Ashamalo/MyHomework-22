@@ -9,20 +9,13 @@ console.log('#5. JavaScript homework example file')
  * якщо ні - то лічба триває
  */
 
-const counter = (function() {
-  let count = 0; 
-  
-  return function(n) {
-    if (n !== undefined) { 
-      count = n; 
-    } else { 
-      count++; 
-    }
-    return count; 
-  };
+const counter = (() => {
+  let count = 0;
+  return (n) => (count = typeof n === 'number' ? n : count, count++);
 })();
+
 console.log(counter()) // 0
-console.log(counter()) // 1
+console.log(counter(0)) // 1
 console.log(counter(100)) // 100
 console.log(counter()) // 101
 console.log(counter()) // 102
@@ -48,19 +41,14 @@ const counterFactory = (function() {
   let count = 0; 
   
   return {
-    value: function(n) {
-      if (n !== undefined) { 
-        count = n; 
-      }
-      return count; 
+    value(n) {
+    return (count = n !== undefined ? n : count);
     },
-    increment: function() {
-      count++; 
-      return count; 
+    increment() {
+      return ++count;
     },
-    decrement: function() {
-      count--; 
-      return count; 
+    decrement() {
+      return --count;
     }
   };
 })();
